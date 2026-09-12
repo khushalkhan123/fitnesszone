@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Members · FitZone Gym</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body data-page="members">
+
+<div class="app-shell">
+  <div class="sidebar-scrim" id="sidebarScrim"></div>
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar__brand">
+      <div class="sidebar__brand-mark">FZ</div>
+      <div class="sidebar__brand-text">
+        <span class="sidebar__brand-name">FitZone Gym</span>
+        <span class="sidebar__brand-sub">Management System</span>
+      </div>
+    </div>
+    <nav class="sidebar__nav">
+      <a href="index.html" class="sidebar__link"><i class="fa-solid fa-gauge-high"></i> Dashboard</a>
+      <a href="members.html" class="sidebar__link sidebar__link--active"><i class="fa-solid fa-users"></i> Members</a>
+      <a href="expenses.html" class="sidebar__link"><i class="fa-solid fa-wallet"></i> Expenses</a>
+      <span class="sidebar__section-label">More</span>
+      <a href="#" class="sidebar__link" data-coming-soon="Payments"><i class="fa-solid fa-money-bill-transfer"></i> Payments <span class="sidebar__link-badge">Soon</span></a>
+      <a href="#" class="sidebar__link" data-coming-soon="Reports"><i class="fa-solid fa-chart-line"></i> Reports <span class="sidebar__link-badge">Soon</span></a>
+      <a href="#" class="sidebar__link" data-coming-soon="Settings"><i class="fa-solid fa-gear"></i> Settings <span class="sidebar__link-badge">Soon</span></a>
+    </nav>
+    <div class="sidebar__footer">
+      <div class="sidebar__owner">
+        <div class="sidebar__owner-avatar">AK</div>
+        <div>
+          <div class="sidebar__owner-name">Asad Khan</div>
+          <div class="sidebar__owner-role">Gym Owner</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <div class="topbar__left">
+        <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle menu"><i class="fa-solid fa-bars"></i></button>
+        <div>
+          <div class="topbar__title">Members</div>
+          <div class="topbar__subtitle">Manage member records, plans and fee payments</div>
+        </div>
+      </div>
+      <div class="topbar__right">
+        <div class="topbar__date" id="currentDate"></div>
+        <button class="btn btn--primary" id="addMemberBtn"><i class="fa-solid fa-user-plus"></i> Add Member</button>
+      </div>
+    </header>
+
+    <main class="content">
+      <section class="stat-grid" style="grid-template-columns:repeat(4,1fr);">
+        <div class="stat-card stat-card--total">
+          <div class="stat-card__icon"><i class="fa-solid fa-users"></i></div>
+          <div class="stat-card__label">Total Members</div>
+          <div class="stat-card__value" id="mStatTotal">—</div>
+        </div>
+        <div class="stat-card stat-card--active">
+          <div class="stat-card__icon"><i class="fa-solid fa-user-check"></i></div>
+          <div class="stat-card__label">Active Members</div>
+          <div class="stat-card__value" id="mStatActive">—</div>
+        </div>
+        <div class="stat-card stat-card--inactive">
+          <div class="stat-card__icon"><i class="fa-solid fa-clock"></i></div>
+          <div class="stat-card__label">Overdue Payments</div>
+          <div class="stat-card__value" id="mStatOverdue">—</div>
+        </div>
+        <div class="stat-card stat-card--profit">
+          <div class="stat-card__icon"><i class="fa-solid fa-hourglass-half"></i></div>
+          <div class="stat-card__label">Pending Payments</div>
+          <div class="stat-card__value" id="mStatPending">—</div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel__body">
+          <div class="toolbar">
+            <div class="toolbar__search">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="text" id="memberSearch" placeholder="Search by name, phone or CNIC...">
+            </div>
+            <select id="filterStatus">
+              <option value="all">All Status</option>
+              <option value="Active">Active</option>
+              <option value="Inactive">Inactive</option>
+            </select>
+            <select id="filterPayment">
+              <option value="all">All Payment Status</option>
+              <option value="Paid">Paid</option>
+              <option value="Pending">Pending</option>
+              <option value="Overdue">Overdue</option>
+            </select>
+            <select id="filterPlan"></select>
+            <div class="toolbar__spacer"></div>
+            <span class="toolbar__count" id="membersResultCount"></span>
+          </div>
+
+          <div class="table-wrap">
+            <table class="data-table" id="membersTable">
+              <thead>
+                <tr>
+                  <th>ID</th><th>Member</th><th>Phone</th><th>Plan</th><th>Fee</th>
+                  <th>Join Date</th><th>Next Payment</th><th>Payment</th><th>Status</th><th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="membersTableBody"></tbody>
+            </table>
+          </div>
+          <div class="empty-state" id="membersEmptyState" style="display:none;"></div>
+        </div>
+      </section>
+
+      <footer class="app-footer">
+        <span>© 2026 FitZone Gym Management System. Demo build for evaluation purposes.</span>
+        <span>Version 1.0.0 · Karachi, Pakistan</span>
+      </footer>
+    </main>
+  </div>
+</div>
+
+<!-- Add / Edit Member Modal -->
+<div class="modal-overlay" id="memberModal">
+  <div class="modal">
+    <div class="modal__header">
+      <h3 id="memberModalTitle">Add New Member</h3>
+      <button class="modal__close" data-close-modal="memberModal"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <form id="memberForm">
+      <div class="modal__body">
+        <div class="form-grid">
+          <div class="form-field"><label>Full Name</label><input name="name" required placeholder="e.g. Ahmed Raza"></div>
+          <div class="form-field"><label>Father / Guardian Name</label><input name="fatherName" placeholder="e.g. Muhammad Raza"></div>
+          <div class="form-field"><label>CNIC (optional)</label><input name="cnic" placeholder="42101-1234567-1"></div>
+          <div class="form-field"><label>Phone Number</label><input name="phone" required placeholder="0300-1234567"></div>
+          <div class="form-field"><label>Emergency Contact</label><input name="emergencyContact" placeholder="0321-1234567"></div>
+          <div class="form-field">
+            <label>Gender</label>
+            <select name="gender"><option>Male</option><option>Female</option></select>
+          </div>
+          <div class="form-field"><label>Date of Birth</label><input type="date" name="dob"></div>
+          <div class="form-field">
+            <label>Membership Plan</label>
+            <select name="plan" id="formPlan" required></select>
+          </div>
+          <div class="form-field"><label>Monthly Fee (Rs.)</label><input type="number" name="fee" id="formFee" required></div>
+          <div class="form-field"><label>Joining Date</label><input type="date" name="joinDate" id="formJoinDate" required></div>
+          <div class="form-field"><label>Next Payment Date</label><input type="date" name="nextPayment" id="formNextPayment" required></div>
+          <div class="form-field">
+            <label>Status</label>
+            <select name="status"><option>Active</option><option>Inactive</option></select>
+          </div>
+          <div class="form-field form-field--full"><label>Notes</label><textarea name="notes" placeholder="Any additional notes about this member..."></textarea></div>
+        </div>
+      </div>
+      <div class="modal__footer">
+        <button type="button" class="btn btn--ghost" id="memberFormCancel">Cancel</button>
+        <button type="submit" class="btn btn--primary"><i class="fa-solid fa-check"></i> Save Member</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- View Member Modal -->
+<div class="modal-overlay" id="viewMemberModal">
+  <div class="modal">
+    <div class="modal__header">
+      <h3>Member Details</h3>
+      <button class="modal__close" data-close-modal="viewMemberModal"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="modal__body" id="viewMemberBody"></div>
+    <div class="modal__footer">
+      <button type="button" class="btn btn--outline" data-close-modal="viewMemberModal">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- Record Payment Modal -->
+<div class="modal-overlay" id="paymentModal">
+  <div class="modal modal--small">
+    <div class="modal__header">
+      <h3>Record Payment</h3>
+      <button class="modal__close" data-close-modal="paymentModal"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <form id="paymentForm">
+      <div class="modal__body">
+        <div class="payment-summary">
+          <div>
+            <strong id="paymentMemberName">—</strong><br>
+            <span id="paymentMemberPlan">—</span>
+          </div>
+          <i class="fa-solid fa-money-bill-wave" style="color:var(--accent); font-size:20px;"></i>
+        </div>
+        <div class="form-grid">
+          <div class="form-field"><label>Amount (Rs.)</label><input type="number" name="amount" required></div>
+          <div class="form-field"><label>Payment Date</label><input type="date" name="date" required></div>
+          <div class="form-field form-field--full">
+            <label>Payment Method</label>
+            <select name="method">
+              <option>Cash</option><option>Bank Transfer</option><option>JazzCash</option><option>Easypaisa</option><option>Card</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="modal__footer">
+        <button type="button" class="btn btn--ghost" id="paymentFormCancel">Cancel</button>
+        <button type="submit" class="btn btn--primary"><i class="fa-solid fa-check"></i> Record Payment</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="/js/script.js"></script>
+</body>
+</html>

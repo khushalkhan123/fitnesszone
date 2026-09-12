@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Expenses · FitZone Gym</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body data-page="expenses">
+
+<div class="app-shell">
+  <div class="sidebar-scrim" id="sidebarScrim"></div>
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar__brand">
+      <div class="sidebar__brand-mark">FZ</div>
+      <div class="sidebar__brand-text">
+        <span class="sidebar__brand-name">FitZone Gym</span>
+        <span class="sidebar__brand-sub">Management System</span>
+      </div>
+    </div>
+    <nav class="sidebar__nav">
+      <a href="index.html" class="sidebar__link"><i class="fa-solid fa-gauge-high"></i> Dashboard</a>
+      <a href="members.html" class="sidebar__link"><i class="fa-solid fa-users"></i> Members</a>
+      <a href="expenses.html" class="sidebar__link sidebar__link--active"><i class="fa-solid fa-wallet"></i> Expenses</a>
+      <span class="sidebar__section-label">More</span>
+      <a href="#" class="sidebar__link" data-coming-soon="Payments"><i class="fa-solid fa-money-bill-transfer"></i> Payments <span class="sidebar__link-badge">Soon</span></a>
+      <a href="#" class="sidebar__link" data-coming-soon="Reports"><i class="fa-solid fa-chart-line"></i> Reports <span class="sidebar__link-badge">Soon</span></a>
+      <a href="#" class="sidebar__link" data-coming-soon="Settings"><i class="fa-solid fa-gear"></i> Settings <span class="sidebar__link-badge">Soon</span></a>
+    </nav>
+    <div class="sidebar__footer">
+      <div class="sidebar__owner">
+        <div class="sidebar__owner-avatar">AK</div>
+        <div>
+          <div class="sidebar__owner-name">Asad Khan</div>
+          <div class="sidebar__owner-role">Gym Owner</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <div class="topbar__left">
+        <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle menu"><i class="fa-solid fa-bars"></i></button>
+        <div>
+          <div class="topbar__title">Expenses</div>
+          <div class="topbar__subtitle">Track bills, salaries and day-to-day gym spending</div>
+        </div>
+      </div>
+      <div class="topbar__right">
+        <div class="topbar__date" id="currentDate"></div>
+        <button class="btn btn--primary" id="addExpenseBtn"><i class="fa-solid fa-plus"></i> Add Expense</button>
+      </div>
+    </header>
+
+    <main class="content">
+      <section class="stat-grid" style="grid-template-columns:repeat(3,1fr);">
+        <div class="stat-card stat-card--expenses">
+          <div class="stat-card__icon"><i class="fa-solid fa-wallet"></i></div>
+          <div class="stat-card__label">Total Expenses</div>
+          <div class="stat-card__value" id="expTotal">—</div>
+        </div>
+        <div class="stat-card stat-card--profit">
+          <div class="stat-card__icon"><i class="fa-solid fa-calendar-days"></i></div>
+          <div class="stat-card__label">This Month</div>
+          <div class="stat-card__value" id="expThisMonth">—</div>
+        </div>
+        <div class="stat-card stat-card--total">
+          <div class="stat-card__icon"><i class="fa-solid fa-calendar-day"></i></div>
+          <div class="stat-card__label">Today</div>
+          <div class="stat-card__value" id="expToday">—</div>
+        </div>
+      </section>
+
+      <section class="panel" style="margin-bottom:18px;">
+        <div class="panel__header">
+          <h3>Spending by Category</h3>
+          <div class="panel__header-sub">All-time totals</div>
+        </div>
+        <div class="panel__body" id="expenseCategoryBreakdown"></div>
+      </section>
+
+      <section class="panel">
+        <div class="panel__body">
+          <div class="toolbar">
+            <div class="toolbar__search">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="text" id="expenseSearch" placeholder="Search description or added by...">
+            </div>
+            <select id="filterExpenseCategory"></select>
+            <select id="filterExpenseMethod">
+              <option value="all">All Methods</option>
+              <option>Cash</option><option>Bank Transfer</option><option>JazzCash</option><option>Easypaisa</option><option>Card</option>
+            </select>
+            <div class="toolbar__spacer"></div>
+            <span class="toolbar__count" id="expensesResultCount"></span>
+          </div>
+
+          <div class="table-wrap">
+            <table class="data-table" id="expensesTable">
+              <thead>
+                <tr><th>Date</th><th>Description</th><th>Category</th><th>Amount</th><th>Method</th><th>Added By</th><th>Actions</th></tr>
+              </thead>
+              <tbody id="expensesTableBody"></tbody>
+            </table>
+          </div>
+          <div class="empty-state" id="expensesEmptyState" style="display:none;"></div>
+        </div>
+      </section>
+
+      <footer class="app-footer">
+        <span>© 2026 FitZone Gym Management System. Demo build for evaluation purposes.</span>
+        <span>Version 1.0.0 · Karachi, Pakistan</span>
+      </footer>
+    </main>
+  </div>
+</div>
+
+<!-- Add / Edit Expense Modal -->
+<div class="modal-overlay" id="expenseModal">
+  <div class="modal modal--small">
+    <div class="modal__header">
+      <h3 id="expenseModalTitle">Add New Expense</h3>
+      <button class="modal__close" data-close-modal="expenseModal"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <form id="expenseForm">
+      <div class="modal__body">
+        <div class="form-grid">
+          <div class="form-field form-field--full"><label>Description</label><input name="description" required placeholder="e.g. Electricity bill payment"></div>
+          <div class="form-field">
+            <label>Category</label>
+            <select name="category" id="formExpenseCategory" required></select>
+          </div>
+          <div class="form-field"><label>Amount (Rs.)</label><input type="number" name="amount" required></div>
+          <div class="form-field"><label>Date</label><input type="date" name="date" required></div>
+          <div class="form-field">
+            <label>Payment Method</label>
+            <select name="method">
+              <option>Cash</option><option>Bank Transfer</option><option>JazzCash</option><option>Easypaisa</option><option>Card</option>
+            </select>
+          </div>
+          <div class="form-field form-field--full"><label>Added By</label><input name="addedBy" placeholder="e.g. Admin"></div>
+        </div>
+      </div>
+      <div class="modal__footer">
+        <button type="button" class="btn btn--ghost" id="expenseFormCancel">Cancel</button>
+        <button type="submit" class="btn btn--primary"><i class="fa-solid fa-check"></i> Save Expense</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="/js/script.js"></script>
+</body>
+</html>

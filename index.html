@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard · FitZone Gym</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body data-page="dashboard">
+
+<div class="app-shell">
+  <div class="sidebar-scrim" id="sidebarScrim"></div>
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar__brand">
+      <div class="sidebar__brand-mark">FZ</div>
+      <div class="sidebar__brand-text">
+        <span class="sidebar__brand-name">FitZone Gym</span>
+        <span class="sidebar__brand-sub">Management System</span>
+      </div>
+    </div>
+    <nav class="sidebar__nav">
+      <a href="index.html" class="sidebar__link sidebar__link--active"><i class="fa-solid fa-gauge-high"></i> Dashboard</a>
+      <a href="members.html" class="sidebar__link"><i class="fa-solid fa-users"></i> Members</a>
+      <a href="expenses.html" class="sidebar__link"><i class="fa-solid fa-wallet"></i> Expenses</a>
+      <span class="sidebar__section-label">More</span>
+      <a href="#" class="sidebar__link" data-coming-soon="Payments"><i class="fa-solid fa-money-bill-transfer"></i> Payments <span class="sidebar__link-badge">Soon</span></a>
+      <a href="#" class="sidebar__link" data-coming-soon="Reports"><i class="fa-solid fa-chart-line"></i> Reports <span class="sidebar__link-badge">Soon</span></a>
+      <a href="#" class="sidebar__link" data-coming-soon="Settings"><i class="fa-solid fa-gear"></i> Settings <span class="sidebar__link-badge">Soon</span></a>
+    </nav>
+    <div class="sidebar__footer">
+      <div class="sidebar__owner">
+        <div class="sidebar__owner-avatar">AK</div>
+        <div>
+          <div class="sidebar__owner-name">Asad Khan</div>
+          <div class="sidebar__owner-role">Gym Owner</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <div class="topbar__left">
+        <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle menu"><i class="fa-solid fa-bars"></i></button>
+        <div>
+          <div class="topbar__title">Welcome back, Asad</div>
+          <div class="topbar__subtitle" id="currentDate"></div>
+        </div>
+      </div>
+      <div class="topbar__right">
+        <div class="topbar__date"><i class="fa-solid fa-dumbbell"></i>FitZone · DHA Branch</div>
+        <button class="btn btn--primary" id="qaAddMember"><i class="fa-solid fa-user-plus"></i> Add Member</button>
+      </div>
+    </header>
+
+    <main class="content">
+
+      <!-- Stat cards -->
+      <section class="stat-grid">
+        <div class="stat-card stat-card--total">
+          <div class="stat-card__icon"><i class="fa-solid fa-users"></i></div>
+          <div class="stat-card__label">Total Members</div>
+          <div class="stat-card__value" id="statTotalMembers">—</div>
+        </div>
+        <div class="stat-card stat-card--active">
+          <div class="stat-card__icon"><i class="fa-solid fa-user-check"></i></div>
+          <div class="stat-card__label">Active Members</div>
+          <div class="stat-card__value" id="statActiveMembers">—</div>
+        </div>
+        <div class="stat-card stat-card--inactive">
+          <div class="stat-card__icon"><i class="fa-solid fa-user-xmark"></i></div>
+          <div class="stat-card__label">Inactive Members</div>
+          <div class="stat-card__value" id="statInactiveMembers">—</div>
+        </div>
+        <div class="stat-card stat-card--revenue">
+          <div class="stat-card__icon"><i class="fa-solid fa-sack-dollar"></i></div>
+          <div class="stat-card__label">Monthly Revenue</div>
+          <div class="stat-card__value" id="statMonthlyRevenue">—</div>
+        </div>
+        <div class="stat-card stat-card--expenses">
+          <div class="stat-card__icon"><i class="fa-solid fa-file-invoice-dollar"></i></div>
+          <div class="stat-card__label">Monthly Expenses</div>
+          <div class="stat-card__value" id="statMonthlyExpenses">—</div>
+        </div>
+        <div class="stat-card stat-card--profit">
+          <div class="stat-card__icon"><i class="fa-solid fa-chart-simple"></i></div>
+          <div class="stat-card__label">Net Profit</div>
+          <div class="stat-card__value" id="statNetProfit">—</div>
+        </div>
+      </section>
+
+      <!-- Quick actions -->
+      <section class="panel" style="margin-bottom: 18px;">
+        <div class="panel__body">
+          <div class="quick-actions">
+            <button class="quick-action-btn" id="qaAddMember2" onclick="document.getElementById('qaAddMember').click()">
+              <div class="quick-action-btn__icon"><i class="fa-solid fa-user-plus"></i></div>
+              <div><div class="quick-action-btn__label">Add Member</div><div class="quick-action-btn__sub">Register a new gym member</div></div>
+            </button>
+            <button class="quick-action-btn" id="qaRecordPayment">
+              <div class="quick-action-btn__icon"><i class="fa-solid fa-money-bill-wave"></i></div>
+              <div><div class="quick-action-btn__label">Record Payment</div><div class="quick-action-btn__sub">Log a membership fee payment</div></div>
+            </button>
+            <button class="quick-action-btn" id="qaAddExpense">
+              <div class="quick-action-btn__icon"><i class="fa-solid fa-receipt"></i></div>
+              <div><div class="quick-action-btn__label">Add Expense</div><div class="quick-action-btn__sub">Record a new gym expense</div></div>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Charts -->
+      <section class="two-col">
+        <div class="panel">
+          <div class="panel__header">
+            <div>
+              <h3>Revenue vs Expenses</h3>
+              <div class="panel__header-sub">Last 6 months</div>
+            </div>
+            <div class="chart-legend">
+              <span><i style="background:#FF7A1A"></i>Revenue</span>
+              <span><i style="background:#1C2129"></i>Expenses</span>
+            </div>
+          </div>
+          <div class="panel__body">
+            <div class="chart-canvas-wrap"><canvas id="chartRevenueExpenses"></canvas></div>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel__header">
+            <div>
+              <h3>Monthly Revenue Trend</h3>
+              <div class="panel__header-sub">Collected fees over time</div>
+            </div>
+          </div>
+          <div class="panel__body">
+            <div class="chart-canvas-wrap"><canvas id="chartMonthlyRevenue"></canvas></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Lists row 1 -->
+      <section class="two-col">
+        <div class="panel">
+          <div class="panel__header">
+            <h3>Recent Payments</h3>
+            <a class="panel__link" href="members.html">View members</a>
+          </div>
+          <div class="panel__body" id="recentPaymentsList"></div>
+        </div>
+        <div class="panel">
+          <div class="panel__header">
+            <h3>Recent Expenses</h3>
+            <a class="panel__link" href="expenses.html">View all</a>
+          </div>
+          <div class="panel__body" id="recentExpensesList"></div>
+        </div>
+      </section>
+
+      <!-- Lists row 2 -->
+      <section class="dashboard-grid">
+        <div class="panel">
+          <div class="panel__header">
+            <h3>Recently Registered Members</h3>
+            <a class="panel__link" href="members.html">Manage members</a>
+          </div>
+          <div class="panel__body" id="recentMembersList"></div>
+        </div>
+        <div class="panel">
+          <div class="panel__header">
+            <h3>Reminders</h3>
+          </div>
+          <div class="panel__body" id="remindersList"></div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel__header">
+          <h3>Fees Due Soon</h3>
+          <a class="panel__link" href="members.html">View all members</a>
+        </div>
+        <div class="panel__body" id="dueSoonList"></div>
+      </section>
+
+      <footer class="app-footer">
+        <span>© 2026 FitZone Gym Management System. Demo build for evaluation purposes.</span>
+        <span>Version 1.0.0 · Karachi, Pakistan</span>
+      </footer>
+    </main>
+  </div>
+</div>
+
+<script src="/js/script.js"></script>
+</body>
+</html>
