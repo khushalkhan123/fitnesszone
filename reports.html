@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reports · FitZone Gym</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="./css/style.css">
+</head>
+<body data-page="reports">
+<div class="app-shell">
+  <div class="sidebar-scrim" id="sidebarScrim"></div>
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar__brand">
+      <div class="sidebar__brand-mark">FZ</div>
+      <div class="sidebar__brand-text">
+        <span class="sidebar__brand-name">FitZone Gym</span>
+        <span class="sidebar__brand-sub">Management System</span>
+      </div>
+    </div>
+    <nav class="sidebar__nav">
+      <a href="index.html" class="sidebar__link"><i class="fa-solid fa-gauge-high"></i> Dashboard</a>
+      <a href="members.html" class="sidebar__link"><i class="fa-solid fa-users"></i> Members</a>
+      <a href="attendance.html" class="sidebar__link"><i class="fa-solid fa-clock"></i> Attendance</a>
+      <a href="payments.html" class="sidebar__link"><i class="fa-solid fa-money-bill-transfer"></i> Payments</a>
+      <a href="plans.html" class="sidebar__link"><i class="fa-solid fa-clipboard-list"></i> Membership Plans</a>
+      <a href="training.html" class="sidebar__link"><i class="fa-solid fa-dumbbell"></i> Personal Training</a>
+      <a href="expenses.html" class="sidebar__link"><i class="fa-solid fa-wallet"></i> Expenses</a>
+      <a href="reports.html" class="sidebar__link sidebar__link--active"><i class="fa-solid fa-chart-line"></i> Reports</a>
+      <a href="staff.html" class="sidebar__link"><i class="fa-solid fa-user-tie"></i> Staff</a>
+      <a href="access-control.html" class="sidebar__link"><i class="fa-solid fa-door-open"></i> Access Control</a>
+      <a href="notifications.html" class="sidebar__link"><i class="fa-solid fa-bell"></i> Notifications</a>
+      <a href="settings.html" class="sidebar__link"><i class="fa-solid fa-gear"></i> Settings</a>
+    </nav>
+    <div class="sidebar__footer">
+      <div class="sidebar__owner">
+        <div class="sidebar__owner-avatar">FK</div>
+        <div>
+          <div class="sidebar__owner-name">Furqan</div>
+          <div class="sidebar__owner-role">Gym Owner</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <div class="topbar__left">
+        <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle menu"><i class="fa-solid fa-bars"></i></button>
+        <div>
+          <div class="topbar__title">Reports & Analytics</div>
+          <div class="topbar__subtitle">Financial and operational health for the gym</div>
+        </div>
+      </div>
+      <div class="topbar__right">
+        <div class="topbar__date" id="currentDate"></div>
+        <button class="btn btn--primary"><i class="fa-solid fa-calendar"></i> This Month</button>
+      </div>
+    </header>
+
+    <main class="content">
+      <div class="page-hero">
+        <div>
+          <div class="page-hero__title">Business overview</div>
+          <div class="page-hero__subtitle">Revenue, retention, attendance and growth at a glance</div>
+        </div>
+        <div class="inline-actions">
+          <button class="btn btn--outline">This Week</button>
+          <button class="btn btn--outline">This Month</button>
+          <button class="btn btn--outline">Last 3 Months</button>
+          <button class="btn btn--primary">This Year</button>
+        </div>
+      </div>
+
+      <section class="kpi-strip">
+        <div class="mini-stat"><div class="mini-stat__label">Revenue</div><div class="mini-stat__value">Rs. 1.16M</div><div class="mini-stat__trend">+14.7% vs last month</div></div>
+        <div class="mini-stat"><div class="mini-stat__label">Expenses</div><div class="mini-stat__value">Rs. 686k</div><div class="mini-stat__trend mini-stat__trend--down">-2.1% lower than target</div></div>
+        <div class="mini-stat"><div class="mini-stat__label">Profit</div><div class="mini-stat__value">Rs. 474k</div><div class="mini-stat__trend">Strong margin</div></div>
+        <div class="mini-stat"><div class="mini-stat__label">Membership Growth</div><div class="mini-stat__value">+12%</div><div class="mini-stat__trend">Healthy expansion</div></div>
+        <div class="mini-stat"><div class="mini-stat__label">Retention</div><div class="mini-stat__value">89%</div><div class="mini-stat__trend">Stable retention</div></div>
+      </section>
+
+      <section class="two-col">
+        <div class="panel">
+          <div class="panel__header"><h3>Revenue Report</h3><div class="panel__header-sub">Net trend</div></div>
+          <div class="panel__body"><div class="chart-canvas-wrap"><canvas id="reportRevenueChart"></canvas></div></div>
+        </div>
+        <div class="panel">
+          <div class="panel__header"><h3>Attendance Trends</h3><div class="panel__header-sub">Daily/weekly</div></div>
+          <div class="panel__body"><div class="chart-canvas-wrap"><canvas id="reportAttendanceChart"></canvas></div></div>
+        </div>
+      </section>
+
+      <section class="two-col">
+        <div class="panel">
+          <div class="panel__header"><h3>Payment Collection</h3></div>
+          <div class="panel__body">
+            <div class="insight-list">
+              <div class="insight-item"><i class="fa-solid fa-wallet"></i><span>Cash collected this month: Rs. 420,000</span></div>
+              <div class="insight-item"><i class="fa-solid fa-mobile-screen-button"></i><span>Digital payments: Rs. 510,000</span></div>
+              <div class="insight-item"><i class="fa-solid fa-building-columns"></i><span>Bank transfer settlements: Rs. 230,000</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel__header"><h3>Business Insights</h3></div>
+          <div class="panel__body">
+            <div class="insight-list">
+              <div class="insight-item"><i class="fa-solid fa-arrow-trend-up"></i><span>Memberships increased by 12% this month.</span></div>
+              <div class="insight-item"><i class="fa-solid fa-clock"></i><span>18 memberships are expiring within the next 7 days.</span></div>
+              <div class="insight-item"><i class="fa-solid fa-dumbbell"></i><span>Revenue from personal training increased this month.</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel__header"><h3>Membership & performance summary</h3></div>
+        <div class="panel__body">
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead>
+                <tr><th>Metric</th><th>Current</th><th>Target</th><th>Status</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>New registrations</td><td>42</td><td>35</td><td><span class="badge badge--success">Above target</span></td></tr>
+                <tr><td>Expired memberships</td><td>18</td><td>12</td><td><span class="badge badge--warning">Monitor</span></td></tr>
+                <tr><td>Member retention</td><td>89%</td><td>90%</td><td><span class="badge badge--warning">Close to target</span></td></tr>
+                <tr><td>Attendance rate</td><td>86%</td><td>88%</td><td><span class="badge badge--success">Strong</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <footer class="app-footer">
+        <span>© 2026 FitZone Gym Management System. Demo build for evaluation purposes.</span>
+        <span>Version 1.0.0 · Karachi, Pakistan</span>
+      </footer>
+    </main>
+  </div>
+</div>
+
+<script src="js/script.js"></script>
+<script>
+  const revenueChart = document.getElementById('reportRevenueChart');
+  const attendanceChart = document.getElementById('reportAttendanceChart');
+  if (revenueChart) {
+    const ctx = revenueChart.getContext('2d');
+    const dpr = window.devicePixelRatio || 1;
+    const rect = revenueChart.getBoundingClientRect();
+    revenueChart.width = rect.width * dpr; revenueChart.height = rect.height * dpr; ctx.scale(dpr,dpr);
+    const W = rect.width, H = rect.height; const labels = ['Jan','Feb','Mar','Apr','May','Jun'];
+    const values = [420000, 560000, 610000, 830000, 960000, 1160000];
+    const padL = 42, padB = 28, padT = 16, padR = 10; const chartW = W-padL-padR, chartH = H-padT-padB; const max = Math.max(...values)*1.2;
+    ctx.clearRect(0,0,W,H); ctx.strokeStyle='rgba(20,23,31,0.08)';
+    for (let i = 0; i <= 4; i++) { const y = padT + chartH - (chartH*i/4); ctx.beginPath(); ctx.moveTo(padL, y); ctx.lineTo(W-padR, y); ctx.stroke(); }
+    const stepX = chartW/(labels.length-1);
+    ctx.beginPath(); ctx.strokeStyle = '#FF7A1A'; ctx.lineWidth = 2.5;
+    values.forEach((value, index) => { const x = padL + stepX*index; const y = padT + chartH - (value/max)*chartH; if(index===0) ctx.moveTo(x,y); else ctx.lineTo(x,y); ctx.fillStyle='rgba(20,23,31,0.6)'; ctx.font='11px Inter, sans-serif'; ctx.textAlign='center'; ctx.fillText(labels[index], x, H-10); });
+    ctx.stroke();
+  }
+  if (attendanceChart) {
+    const ctx = attendanceChart.getContext('2d');
+    const dpr = window.devicePixelRatio || 1; const rect = attendanceChart.getBoundingClientRect();
+    attendanceChart.width = rect.width * dpr; attendanceChart.height = rect.height * dpr; ctx.scale(dpr,dpr);
+    const W = rect.width, H = rect.height; const labels = ['Mon','Tue','Wed','Thu','Fri','Sat']; const values = [72,75,78,80,84,86];
+    const padL = 42, padB = 28, padT = 16, padR = 10; const chartW = W-padL-padR, chartH = H-padT-padB; const max = 100;
+    ctx.clearRect(0,0,W,H); ctx.strokeStyle='rgba(20,23,31,0.08)'; for (let i = 0; i <= 4; i++) { const y = padT + chartH - (chartH*i/4); ctx.beginPath(); ctx.moveTo(padL, y); ctx.lineTo(W-padR, y); ctx.stroke(); }
+    const stepX = chartW/(labels.length-1); ctx.beginPath(); ctx.strokeStyle= '#1F9D55'; ctx.lineWidth = 2.5; values.forEach((value,index) => { const x = padL + stepX*index; const y = padT + chartH - (value/max)*chartH; if(index===0) ctx.moveTo(x,y); else ctx.lineTo(x,y); ctx.fillStyle='rgba(20,23,31,0.6)'; ctx.font='11px Inter, sans-serif'; ctx.textAlign='center'; ctx.fillText(labels[index], x, H-10); }); ctx.stroke();
+  }
+</script>
+</body>
+</html>

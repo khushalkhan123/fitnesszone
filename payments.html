@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Payments · FitZone Gym</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="./css/style.css">
+</head>
+<body data-page="payments">
+<div class="app-shell">
+  <div class="sidebar-scrim" id="sidebarScrim"></div>
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar__brand">
+      <div class="sidebar__brand-mark">FZ</div>
+      <div class="sidebar__brand-text">
+        <span class="sidebar__brand-name">FitZone Gym</span>
+        <span class="sidebar__brand-sub">Management System</span>
+      </div>
+    </div>
+    <nav class="sidebar__nav">
+      <a href="index.html" class="sidebar__link"><i class="fa-solid fa-gauge-high"></i> Dashboard</a>
+      <a href="members.html" class="sidebar__link"><i class="fa-solid fa-users"></i> Members</a>
+      <a href="attendance.html" class="sidebar__link"><i class="fa-solid fa-clock"></i> Attendance</a>
+      <a href="payments.html" class="sidebar__link sidebar__link--active"><i class="fa-solid fa-money-bill-transfer"></i> Payments</a>
+      <a href="plans.html" class="sidebar__link"><i class="fa-solid fa-clipboard-list"></i> Membership Plans</a>
+      <a href="training.html" class="sidebar__link"><i class="fa-solid fa-dumbbell"></i> Personal Training</a>
+      <a href="expenses.html" class="sidebar__link"><i class="fa-solid fa-wallet"></i> Expenses</a>
+      <a href="reports.html" class="sidebar__link"><i class="fa-solid fa-chart-line"></i> Reports</a>
+      <a href="staff.html" class="sidebar__link"><i class="fa-solid fa-user-tie"></i> Staff</a>
+      <a href="access-control.html" class="sidebar__link"><i class="fa-solid fa-door-open"></i> Access Control</a>
+      <a href="notifications.html" class="sidebar__link"><i class="fa-solid fa-bell"></i> Notifications</a>
+      <a href="settings.html" class="sidebar__link"><i class="fa-solid fa-gear"></i> Settings</a>
+    </nav>
+    <div class="sidebar__footer">
+      <div class="sidebar__owner">
+        <div class="sidebar__owner-avatar">FK</div>
+        <div>
+          <div class="sidebar__owner-name">Furqan</div>
+          <div class="sidebar__owner-role">Gym Owner</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <div class="topbar__left">
+        <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle menu"><i class="fa-solid fa-bars"></i></button>
+        <div>
+          <div class="topbar__title">Payments</div>
+          <div class="topbar__subtitle">Track collections, fees and payment history</div>
+        </div>
+      </div>
+      <div class="topbar__right">
+        <div class="topbar__date" id="currentDate"></div>
+        <button class="btn btn--primary"><i class="fa-solid fa-money-bill-wave"></i> Record Payment</button>
+      </div>
+    </header>
+
+    <main class="content">
+      <div class="page-hero">
+        <div>
+          <div class="page-hero__title">Collections overview</div>
+          <div class="page-hero__subtitle">Payment status tracking for memberships and training packages</div>
+        </div>
+        <div class="inline-actions">
+          <button class="btn btn--outline"><i class="fa-solid fa-receipt"></i> View Receipt</button>
+          <button class="btn btn--primary"><i class="fa-solid fa-clock-rotate-left"></i> Payment History</button>
+        </div>
+      </div>
+
+      <section class="kpi-strip">
+        <div class="mini-stat">
+          <div class="mini-stat__label">Total Collected</div>
+          <div class="mini-stat__value">Rs. 2.38M</div>
+          <div class="mini-stat__trend">+11.2% this quarter</div>
+        </div>
+        <div class="mini-stat">
+          <div class="mini-stat__label">Today’s Collection</div>
+          <div class="mini-stat__value">Rs. 172,500</div>
+          <div class="mini-stat__trend">23 payments posted</div>
+        </div>
+        <div class="mini-stat">
+          <div class="mini-stat__label">Pending Payments</div>
+          <div class="mini-stat__value">19</div>
+          <div class="mini-stat__trend mini-stat__trend--down">4 due today</div>
+        </div>
+        <div class="mini-stat">
+          <div class="mini-stat__label">Overdue</div>
+          <div class="mini-stat__value">07</div>
+          <div class="mini-stat__trend mini-stat__trend--down">Needs follow-up</div>
+        </div>
+        <div class="mini-stat">
+          <div class="mini-stat__label">Collection Rate</div>
+          <div class="mini-stat__value">92%</div>
+          <div class="mini-stat__trend">Healthy and stable</div>
+        </div>
+      </section>
+
+      <section class="two-col">
+        <div class="panel">
+          <div class="panel__header">
+            <h3>Payment Collection</h3>
+            <div class="panel__header-sub">Last 6 months</div>
+          </div>
+          <div class="panel__body">
+            <div class="chart-canvas-wrap"><canvas id="paymentChart"></canvas></div>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel__header">
+            <h3>Recent Transactions</h3>
+            <a class="panel__link" href="#">View all</a>
+          </div>
+          <div class="panel__body">
+            <div class="list-row">
+              <div class="list-row__avatar">AK</div>
+              <div class="list-row__main">
+                <div class="list-row__title">Ahmed Khan</div>
+                <div class="list-row__sub">Monthly Membership · 18 Sep 2026</div>
+              </div>
+              <div class="list-row__value list-row__value--success">Rs. 3,500</div>
+            </div>
+            <div class="list-row">
+              <div class="list-row__avatar">SR</div>
+              <div class="list-row__main">
+                <div class="list-row__title">Sana Riaz</div>
+                <div class="list-row__sub">JazzCash · 17 Sep 2026</div>
+              </div>
+              <div class="list-row__value list-row__value--success">Rs. 5,000</div>
+            </div>
+            <div class="list-row">
+              <div class="list-row__avatar">AM</div>
+              <div class="list-row__main">
+                <div class="list-row__title">Ayesha Malik</div>
+                <div class="list-row__sub">Bank Transfer · 16 Sep 2026</div>
+              </div>
+              <div class="list-row__value list-row__value--success">Rs. 16,000</div>
+            </div>
+            <div class="list-row">
+              <div class="list-row__avatar">UM</div>
+              <div class="list-row__main">
+                <div class="list-row__title">Usman Malik</div>
+                <div class="list-row__sub">Card · 15 Sep 2026</div>
+              </div>
+              <div class="list-row__value list-row__value--success">Rs. 8,000</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel__body">
+          <div class="toolbar">
+            <div class="toolbar__search">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="text" placeholder="Search member or plan...">
+            </div>
+            <select>
+              <option>All Methods</option>
+              <option>Cash</option>
+              <option>Bank Transfer</option>
+              <option>JazzCash</option>
+              <option>Easypaisa</option>
+              <option>Card</option>
+            </select>
+            <select>
+              <option>All Status</option>
+              <option>Paid</option>
+              <option>Pending</option>
+              <option>Overdue</option>
+            </select>
+            <div class="toolbar__spacer"></div>
+            <span class="toolbar__count">92 transactions</span>
+          </div>
+
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Member</th>
+                  <th>Plan</th>
+                  <th>Amount</th>
+                  <th>Payment Date</th>
+                  <th>Method</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><div class="cell-person"><div class="list-row__avatar">AK</div><div><div class="cell-person__name">Ahmed Khan</div><div class="cell-person__sub">GYM-1024</div></div></div></td>
+                  <td>Monthly Membership</td>
+                  <td class="amount-cell">Rs. 3,500</td>
+                  <td>18 Sep 2026</td>
+                  <td>Cash</td>
+                  <td><span class="badge badge--success">Paid</span></td>
+                  <td><button class="btn btn--outline btn--sm"><i class="fa-solid fa-eye"></i> View</button></td>
+                </tr>
+                <tr>
+                  <td><div class="cell-person"><div class="list-row__avatar">BS</div><div><div class="cell-person__name">Bilal Shah</div><div class="cell-person__sub">GYM-1091</div></div></div></td>
+                  <td>Premium Monthly</td>
+                  <td class="amount-cell">Rs. 5,000</td>
+                  <td>17 Sep 2026</td>
+                  <td>JazzCash</td>
+                  <td><span class="badge badge--success">Paid</span></td>
+                  <td><button class="btn btn--outline btn--sm"><i class="fa-solid fa-eye"></i> View</button></td>
+                </tr>
+                <tr>
+                  <td><div class="cell-person"><div class="list-row__avatar">NM</div><div><div class="cell-person__name">Noor Malik</div><div class="cell-person__sub">GYM-1185</div></div></div></td>
+                  <td>Annual Membership</td>
+                  <td class="amount-cell">Rs. 28,000</td>
+                  <td>12 Sep 2026</td>
+                  <td>Bank Transfer</td>
+                  <td><span class="badge badge--warning">Pending</span></td>
+                  <td><button class="btn btn--outline btn--sm"><i class="fa-solid fa-eye"></i> View</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <footer class="app-footer">
+        <span>© 2026 FitZone Gym Management System. Demo build for evaluation purposes.</span>
+        <span>Version 1.0.0 · Karachi, Pakistan</span>
+      </footer>
+    </main>
+  </div>
+</div>
+
+<script src="js/script.js"></script>
+<script>
+  const paymentCanvas = document.getElementById('paymentChart');
+  if (paymentCanvas) {
+    const ctx = paymentCanvas.getContext('2d');
+    const dpr = window.devicePixelRatio || 1;
+    const rect = paymentCanvas.getBoundingClientRect();
+    paymentCanvas.width = rect.width * dpr;
+    paymentCanvas.height = rect.height * dpr;
+    ctx.scale(dpr, dpr);
+    const W = rect.width, H = rect.height;
+    const labels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'];
+    const values = [110000, 145000, 160000, 200000, 220000, 188000];
+    const padL = 40, padB = 28, padT = 16, padR = 12;
+    const chartW = W - padL - padR, chartH = H - padT - padB;
+    const maxVal = Math.max(...values) * 1.2;
+    ctx.clearRect(0,0,W,H);
+    ctx.strokeStyle = 'rgba(20,23,31,0.08)';
+    for (let i = 0; i <= 4; i++) {
+      const y = padT + chartH - (chartH * i / 4);
+      ctx.beginPath(); ctx.moveTo(padL, y); ctx.lineTo(W-padR, y); ctx.stroke();
+    }
+    ctx.beginPath();
+    const stepX = chartW / (labels.length - 1);
+    labels.forEach((label, index) => {
+      const x = padL + stepX * index;
+      const y = padT + chartH - (values[index] / maxVal) * chartH;
+      if (index === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+      ctx.fillStyle = 'rgba(20,23,31,0.55)';
+      ctx.font = '11px Inter, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText(label, x, H - 8);
+    });
+    ctx.strokeStyle = '#FF7A1A';
+    ctx.lineWidth = 2.5;
+    ctx.stroke();
+    ctx.lineTo(padL + stepX * (labels.length - 1), padT + chartH);
+    const grad = ctx.createLinearGradient(0, padT, 0, padT + chartH);
+    grad.addColorStop(0, '#FF7A1A33');
+    grad.addColorStop(1, '#FF7A1A02');
+    ctx.lineTo(padL, padT + chartH); ctx.closePath(); ctx.fillStyle = grad; ctx.fill();
+    values.forEach((val, index) => {
+      const x = padL + stepX * index;
+      const y = padT + chartH - (val / maxVal) * chartH;
+      ctx.beginPath(); ctx.fillStyle = '#FF7A1A'; ctx.arc(x, y, 3.5, 0, Math.PI * 2); ctx.fill();
+    });
+  }
+</script>
+</body>
+</html>

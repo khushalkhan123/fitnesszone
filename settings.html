@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Settings · FitZone Gym</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="./css/style.css">
+</head>
+<body data-page="settings">
+<div class="app-shell">
+  <div class="sidebar-scrim" id="sidebarScrim"></div>
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar__brand">
+      <div class="sidebar__brand-mark">FZ</div>
+      <div class="sidebar__brand-text">
+        <span class="sidebar__brand-name">FitZone Gym</span>
+        <span class="sidebar__brand-sub">Management System</span>
+      </div>
+    </div>
+    <nav class="sidebar__nav">
+      <a href="index.html" class="sidebar__link"><i class="fa-solid fa-gauge-high"></i> Dashboard</a>
+      <a href="members.html" class="sidebar__link"><i class="fa-solid fa-users"></i> Members</a>
+      <a href="attendance.html" class="sidebar__link"><i class="fa-solid fa-clock"></i> Attendance</a>
+      <a href="payments.html" class="sidebar__link"><i class="fa-solid fa-money-bill-transfer"></i> Payments</a>
+      <a href="plans.html" class="sidebar__link"><i class="fa-solid fa-clipboard-list"></i> Membership Plans</a>
+      <a href="training.html" class="sidebar__link"><i class="fa-solid fa-dumbbell"></i> Personal Training</a>
+      <a href="expenses.html" class="sidebar__link"><i class="fa-solid fa-wallet"></i> Expenses</a>
+      <a href="reports.html" class="sidebar__link"><i class="fa-solid fa-chart-line"></i> Reports</a>
+      <a href="staff.html" class="sidebar__link"><i class="fa-solid fa-user-tie"></i> Staff</a>
+      <a href="access-control.html" class="sidebar__link"><i class="fa-solid fa-door-open"></i> Access Control</a>
+      <a href="notifications.html" class="sidebar__link"><i class="fa-solid fa-bell"></i> Notifications</a>
+      <a href="settings.html" class="sidebar__link sidebar__link--active"><i class="fa-solid fa-gear"></i> Settings</a>
+    </nav>
+    <div class="sidebar__footer">
+      <div class="sidebar__owner">
+        <div class="sidebar__owner-avatar">FK</div>
+        <div>
+          <div class="sidebar__owner-name">Furqan</div>
+          <div class="sidebar__owner-role">Gym Owner</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <div class="topbar__left">
+        <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle menu"><i class="fa-solid fa-bars"></i></button>
+        <div>
+          <div class="topbar__title">Settings</div>
+          <div class="topbar__subtitle">Gym profile, membership and automation preferences</div>
+        </div>
+      </div>
+      <div class="topbar__right">
+        <div class="topbar__date" id="currentDate"></div>
+        <button class="btn btn--primary"><i class="fa-solid fa-floppy-disk"></i> Save Changes</button>
+      </div>
+    </header>
+
+    <main class="content">
+      <div class="page-hero">
+        <div>
+          <div class="page-hero__title">System configuration</div>
+          <div class="page-hero__subtitle">Operational settings for membership and access control</div>
+        </div>
+      </div>
+
+      <section class="setting-grid">
+        <div class="setting-card">
+          <h3>Gym Profile</h3>
+          <div class="setting-row"><div class="setting-row__meta"><strong>Gym Name</strong><span>FitZone Gym</span></div><div class="switch switch--on"></div></div>
+          <div class="setting-row"><div class="setting-row__meta"><strong>Phone</strong><span>+92 300 1234567</span></div><div class="switch switch--on"></div></div>
+          <div class="setting-row"><div class="setting-row__meta"><strong>Address</strong><span>DHA Phase 5, Karachi</span></div><div class="switch switch--on"></div></div>
+          <div class="setting-row"><div class="setting-row__meta"><strong>Email</strong><span>info@fitzonegym.pk</span></div><div class="switch switch--on"></div></div>
+          <div class="setting-row"><div class="setting-row__meta"><strong>Opening Hours</strong><span>6:00 AM – 11:00 PM</span></div><div class="switch switch--on"></div></div>
+        </div>
+
+        <div class="setting-card">
+          <h3>Membership Settings</h3>
+          <div class="setting-row"><div class="setting-row__meta"><strong>Default Monthly Fee</strong><span>Rs. 3,500</span></div><div class="switch switch--on"></div></div>
+          <div class="setting-row"><div class="setting-row__meta"><strong>Grace Period</strong><span>5 days</span></div><div class="switch switch--on"></div></div>
+          <div class="setting-row"><div class="setting-row__meta"><strong>Expiry Reminder</strong><span>7 days before expiry</span></div><div class="switch switch--on"></div></div>
+          <div class="setting-row"><div class="setting-row__meta"><strong>Auto renewal</strong><span>Optional</span></div><div class="switch"></div></div>
+        </div>
+
+        <div class="setting-card">
+          <h3>Attendance Settings</h3>
+          <div class="setting-row"><div class="setting-row__meta"><strong>Check-in rules</strong><span>Fingerprint + member validation</span></div><div class="switch switch--on"></div></div>
+          <div class="setting-row"><div class="setting-row__meta"><strong>Late threshold</strong><span>15 minutes</span></div><div class="switch switch--on"></div></div>
+          <div class="setting-row"><div class="setting-row__meta"><strong>Entry restrictions</strong><span>Fee expiry check</span></div><div class="switch switch--on"></div></div>
+          <div class="setting-row"><div class="setting-row__meta"><strong>Auto attendance sync</strong><span>Enabled</span></div><div class="switch switch--on"></div></div>
+        </div>
+
+        <div class="setting-card">
+          <h3>Notification Settings</h3>
+          <div class="setting-row"><div class="setting-row__meta"><strong>SMS</strong><span>Enabled for renewals</span></div><div class="switch switch--on"></div></div>
+          <div class="setting-row"><div class="setting-row__meta"><strong>Email</strong><span>Enabled for reports</span></div><div class="switch switch--on"></div></div>
+          <div class="setting-row"><div class="setting-row__meta"><strong>Templates</strong><span>Customizable</span></div><div class="switch switch--on"></div></div>
+        </div>
+
+        <div class="setting-card" style="grid-column: 1 / -1;">
+          <h3>Access Control</h3>
+          <div class="setting-row"><div class="setting-row__meta"><strong>Device integration</strong><span>Demo / Future ZKTeco</span></div><div class="switch switch--on"></div></div>
+          <div class="setting-row"><div class="setting-row__meta"><strong>Door access rules</strong><span>Member validation + membership check</span></div><div class="switch switch--on"></div></div>
+          <div class="setting-row"><div class="setting-row__meta"><strong>Restricted access</strong><span>Expired memberships</span></div><div class="switch switch--on"></div></div>
+        </div>
+      </section>
+
+      <footer class="app-footer">
+        <span>© 2026 FitZone Gym Management System. Demo build for evaluation purposes.</span>
+        <span>Version 1.0.0 · Karachi, Pakistan</span>
+      </footer>
+    </main>
+  </div>
+</div>
+
+<script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Personal Training · FitZone Gym</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="./css/style.css">
+</head>
+<body data-page="training">
+<div class="app-shell">
+  <div class="sidebar-scrim" id="sidebarScrim"></div>
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar__brand">
+      <div class="sidebar__brand-mark">FZ</div>
+      <div class="sidebar__brand-text">
+        <span class="sidebar__brand-name">FitZone Gym</span>
+        <span class="sidebar__brand-sub">Management System</span>
+      </div>
+    </div>
+    <nav class="sidebar__nav">
+      <a href="index.html" class="sidebar__link"><i class="fa-solid fa-gauge-high"></i> Dashboard</a>
+      <a href="members.html" class="sidebar__link"><i class="fa-solid fa-users"></i> Members</a>
+      <a href="attendance.html" class="sidebar__link"><i class="fa-solid fa-clock"></i> Attendance</a>
+      <a href="payments.html" class="sidebar__link"><i class="fa-solid fa-money-bill-transfer"></i> Payments</a>
+      <a href="plans.html" class="sidebar__link"><i class="fa-solid fa-clipboard-list"></i> Membership Plans</a>
+      <a href="training.html" class="sidebar__link sidebar__link--active"><i class="fa-solid fa-dumbbell"></i> Personal Training</a>
+      <a href="expenses.html" class="sidebar__link"><i class="fa-solid fa-wallet"></i> Expenses</a>
+      <a href="reports.html" class="sidebar__link"><i class="fa-solid fa-chart-line"></i> Reports</a>
+      <a href="staff.html" class="sidebar__link"><i class="fa-solid fa-user-tie"></i> Staff</a>
+      <a href="access-control.html" class="sidebar__link"><i class="fa-solid fa-door-open"></i> Access Control</a>
+      <a href="notifications.html" class="sidebar__link"><i class="fa-solid fa-bell"></i> Notifications</a>
+      <a href="settings.html" class="sidebar__link"><i class="fa-solid fa-gear"></i> Settings</a>
+    </nav>
+    <div class="sidebar__footer">
+      <div class="sidebar__owner">
+        <div class="sidebar__owner-avatar">FK</div>
+        <div>
+          <div class="sidebar__owner-name">Furqan</div>
+          <div class="sidebar__owner-role">Gym Owner</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <div class="topbar__left">
+        <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle menu"><i class="fa-solid fa-bars"></i></button>
+        <div>
+          <div class="topbar__title">Personal Training</div>
+          <div class="topbar__subtitle">High-value coaching sessions and trainer management</div>
+        </div>
+      </div>
+      <div class="topbar__right">
+        <div class="topbar__date" id="currentDate"></div>
+        <button class="btn btn--primary"><i class="fa-solid fa-calendar-plus"></i> Schedule Session</button>
+      </div>
+    </header>
+
+    <main class="content">
+      <div class="page-hero">
+        <div>
+          <div class="page-hero__title">Trainer performance & scheduling</div>
+          <div class="page-hero__subtitle">A premium revenue stream for the business</div>
+        </div>
+        <div class="inline-actions">
+          <button class="btn btn--outline"><i class="fa-solid fa-list-check"></i> View Sessions</button>
+          <button class="btn btn--primary"><i class="fa-solid fa-chart-line"></i> Revenue Report</button>
+        </div>
+      </div>
+
+      <section class="trainer-grid">
+        <div class="trainer-card">
+          <div class="trainer-card__top">
+            <div class="trainer-card__avatar">AR</div>
+            <span class="badge badge--success">Available</span>
+          </div>
+          <h3 style="margin-top: 14px; font-size: 16px;">Ali Raza</h3>
+          <div class="cell-person__sub" style="margin-top:6px;">Strength & transformation coach</div>
+          <div class="trainer-card__metrics">
+            <div class="metric-box"><div class="metric-box__label">Assigned Members</div><div class="metric-box__value">24</div></div>
+            <div class="metric-box"><div class="metric-box__label">Today</div><div class="metric-box__value">8</div></div>
+            <div class="metric-box"><div class="metric-box__label">Sessions Completed</div><div class="metric-box__value">62</div></div>
+            <div class="metric-box"><div class="metric-box__label">Monthly Revenue</div><div class="metric-box__value">Rs. 96k</div></div>
+          </div>
+        </div>
+
+        <div class="trainer-card">
+          <div class="trainer-card__top">
+            <div class="trainer-card__avatar">NS</div>
+            <span class="badge badge--warning">Busy</span>
+          </div>
+          <h3 style="margin-top: 14px; font-size: 16px;">Nadia Shah</h3>
+          <div class="cell-person__sub" style="margin-top:6px;">Fat loss & conditioning</div>
+          <div class="trainer-card__metrics">
+            <div class="metric-box"><div class="metric-box__label">Assigned Members</div><div class="metric-box__value">19</div></div>
+            <div class="metric-box"><div class="metric-box__label">Today</div><div class="metric-box__value">6</div></div>
+            <div class="metric-box"><div class="metric-box__label">Sessions Completed</div><div class="metric-box__value">58</div></div>
+            <div class="metric-box"><div class="metric-box__label">Monthly Revenue</div><div class="metric-box__value">Rs. 82k</div></div>
+          </div>
+        </div>
+
+        <div class="trainer-card">
+          <div class="trainer-card__top">
+            <div class="trainer-card__avatar">HA</div>
+            <span class="badge badge--success">Available</span>
+          </div>
+          <h3 style="margin-top: 14px; font-size: 16px;">Hassan Ali</h3>
+          <div class="cell-person__sub" style="margin-top:6px;">Functional fitness coach</div>
+          <div class="trainer-card__metrics">
+            <div class="metric-box"><div class="metric-box__label">Assigned Members</div><div class="metric-box__value">15</div></div>
+            <div class="metric-box"><div class="metric-box__label">Today</div><div class="metric-box__value">5</div></div>
+            <div class="metric-box"><div class="metric-box__label">Sessions Completed</div><div class="metric-box__value">49</div></div>
+            <div class="metric-box"><div class="metric-box__label">Monthly Revenue</div><div class="metric-box__value">Rs. 74k</div></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="schedule-grid">
+        <div class="panel">
+          <div class="panel__header">
+            <h3>Session Schedule</h3>
+            <a class="panel__link" href="#">Manage calendar</a>
+          </div>
+          <div class="panel__body">
+            <div class="table-wrap">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Member</th>
+                    <th>Trainer</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Type</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Ahmed Khan</td>
+                    <td>Ali Raza</td>
+                    <td>18 Sep 2026</td>
+                    <td>06:00 PM</td>
+                    <td>Strength</td>
+                    <td><span class="badge badge--success">Scheduled</span></td>
+                  </tr>
+                  <tr>
+                    <td>Mahnoor Butt</td>
+                    <td>Nadia Shah</td>
+                    <td>18 Sep 2026</td>
+                    <td>07:30 PM</td>
+                    <td>Fat Loss</td>
+                    <td><span class="badge badge--success">Scheduled</span></td>
+                  </tr>
+                  <tr>
+                    <td>Bilal Ahmed</td>
+                    <td>Hassan Ali</td>
+                    <td>17 Sep 2026</td>
+                    <td>05:45 PM</td>
+                    <td>Conditioning</td>
+                    <td><span class="badge badge--neutral">Completed</span></td>
+                  </tr>
+                  <tr>
+                    <td>Usman Ali</td>
+                    <td>Ali Raza</td>
+                    <td>16 Sep 2026</td>
+                    <td>07:00 PM</td>
+                    <td>Mobility</td>
+                    <td><span class="badge badge--danger">Cancelled</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel__header">
+            <h3>Upcoming Sessions</h3>
+          </div>
+          <div class="panel__body">
+            <div class="insight-list">
+              <div class="insight-item"><i class="fa-solid fa-calendar-check"></i><span>6 personal trainer sessions scheduled for today.</span></div>
+              <div class="insight-item"><i class="fa-solid fa-money-bill-wave"></i><span>Projected training revenue for this week: Rs. 120,000.</span></div>
+              <div class="insight-item"><i class="fa-solid fa-user-check"></i><span>4 members are due for progress review next week.</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="app-footer">
+        <span>© 2026 FitZone Gym Management System. Demo build for evaluation purposes.</span>
+        <span>Version 1.0.0 · Karachi, Pakistan</span>
+      </footer>
+    </main>
+  </div>
+</div>
+
+<script src="js/script.js"></script>
+</body>
+</html>

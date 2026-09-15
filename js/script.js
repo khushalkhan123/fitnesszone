@@ -419,14 +419,6 @@ function initShell() {
     });
   }
 
-  // "Coming soon" nav items (Payments / Reports / Settings)
-  document.querySelectorAll('[data-coming-soon]').forEach(link => {
-    link.addEventListener('click', (e) => {
-      e.preventDefault();
-      toast(`${link.getAttribute('data-coming-soon')} is coming soon in the full version.`, 'info');
-    });
-  });
-
   // Live clock / date
   const dateEl = document.getElementById('currentDate');
   if (dateEl) {
@@ -774,6 +766,7 @@ function bindQuickActions() {
    MEMBERS PAGE
    ========================================================================= */
 let membersFilterState = { search: '', status: 'all', payment: 'all', plan: 'all' };
+let membersPageState = { currentPage: 1, pageSize: 8 };
 
 function initMembersPage() {
   populatePlanSelects();
@@ -832,10 +825,10 @@ function bindMemberFilters() {
   const statusSel = document.getElementById('filterStatus');
   const paymentSel = document.getElementById('filterPayment');
   const planSel = document.getElementById('filterPlan');
-  if (search) search.addEventListener('input', () => { membersFilterState.search = search.value.trim().toLowerCase(); renderMembersTable(); });
-  if (statusSel) statusSel.addEventListener('change', () => { membersFilterState.status = statusSel.value; renderMembersTable(); });
-  if (paymentSel) paymentSel.addEventListener('change', () => { membersFilterState.payment = paymentSel.value; renderMembersTable(); });
-  if (planSel) planSel.addEventListener('change', () => { membersFilterState.plan = planSel.value; renderMembersTable(); });
+  if (search) search.addEventListener('input', () => { membersFilterState.search = search.value.trim().toLowerCase(); membersPageState.currentPage = 1; renderMembersTable(); });
+  if (statusSel) statusSel.addEventListener('change', () => { membersFilterState.status = statusSel.value; membersPageState.currentPage = 1; renderMembersTable(); });
+  if (paymentSel) paymentSel.addEventListener('change', () => { membersFilterState.payment = paymentSel.value; membersPageState.currentPage = 1; renderMembersTable(); });
+  if (planSel) planSel.addEventListener('change', () => { membersFilterState.plan = planSel.value; membersPageState.currentPage = 1; renderMembersTable(); });
 
   const addBtn = document.getElementById('addMemberBtn');
   if (addBtn) addBtn.addEventListener('click', () => openMemberModal());
@@ -856,8 +849,13 @@ function renderMembersTable() {
   const tbody = document.getElementById('membersTableBody');
   const emptyWrap = document.getElementById('membersEmptyState');
   const table = document.getElementById('membersTable');
+  const paginationEl = document.getElementById('membersPagination');
   if (!tbody) return;
+
   const list = getFilteredMembers();
+  const totalPages = Math.max(1, Math.ceil(list.length / membersPageState.pageSize));
+  if (membersPageState.currentPage > totalPages) membersPageState.currentPage = totalPages;
+
   const countEl = document.getElementById('membersResultCount');
   if (countEl) countEl.textContent = `${list.length} member${list.length !== 1 ? 's' : ''}`;
 
@@ -865,12 +863,17 @@ function renderMembersTable() {
     table.style.display = 'none';
     emptyWrap.style.display = 'flex';
     emptyWrap.innerHTML = emptyState('fa-user-slash', 'No members match your filters', 'Try adjusting search or filters, or add a new member.');
+    if (paginationEl) paginationEl.innerHTML = '';
     return;
   }
+
   table.style.display = '';
   emptyWrap.style.display = 'none';
 
-  tbody.innerHTML = list.map(m => `
+  const startIndex = (membersPageState.currentPage - 1) * membersPageState.pageSize;
+  const pageRows = list.slice(startIndex, startIndex + membersPageState.pageSize);
+
+  tbody.innerHTML = pageRows.map(m => `
     <tr>
       <td><span class="mono">${m.id}</span></td>
       <td>
@@ -903,6 +906,33 @@ function renderMembersTable() {
   tbody.querySelectorAll('[data-edit]').forEach(b => b.addEventListener('click', () => openMemberModal(b.dataset.edit)));
   tbody.querySelectorAll('[data-pay]').forEach(b => b.addEventListener('click', () => openPaymentModal(b.dataset.pay)));
   tbody.querySelectorAll('[data-delete]').forEach(b => b.addEventListener('click', () => handleDeleteMember(b.dataset.delete)));
+
+  if (paginationEl) {
+    const pages = Array.from({ length: totalPages }, (_, index) => index + 1);
+    paginationEl.innerHTML = `
+      <button class="page-btn" data-page-action="prev" ${membersPageState.currentPage === 1 ? 'disabled' : ''}>Prev</button>
+      ${pages.map(pageNumber => `
+        <button class="page-btn ${pageNumber === membersPageState.currentPage ? 'page-btn--active' : ''}" data-page-number="${pageNumber}">${pageNumber}</button>
+      `).join('')}
+      <button class="page-btn" data-page-action="next" ${membersPageState.currentPage === totalPages ? 'disabled' : ''}>Next</button>
+    `;
+
+    paginationEl.querySelectorAll('[data-page-number]').forEach(button => {
+      button.addEventListener('click', () => {
+        membersPageState.currentPage = Number(button.dataset.pageNumber);
+        renderMembersTable();
+      });
+    });
+
+    paginationEl.querySelectorAll('[data-page-action]').forEach(button => {
+      button.addEventListener('click', () => {
+        const action = button.dataset.pageAction;
+        if (action === 'prev') membersPageState.currentPage = Math.max(1, membersPageState.currentPage - 1);
+        if (action === 'next') membersPageState.currentPage = Math.min(totalPages, membersPageState.currentPage + 1);
+        renderMembersTable();
+      });
+    });
+  }
 }
 
 /* ---- Add / Edit member modal ---- */
@@ -1080,6 +1110,7 @@ document.addEventListener('DOMContentLoaded', bindPaymentFormOnce);
    EXPENSES PAGE
    ========================================================================= */
 let expensesFilterState = { search: '', category: 'all', method: 'all' };
+let expensesPageState = { currentPage: 1, pageSize: 8 };
 
 function initExpensesPage() {
   populateExpenseCategorySelects();
@@ -1134,9 +1165,9 @@ function bindExpenseFilters() {
   const search = document.getElementById('expenseSearch');
   const catSel = document.getElementById('filterExpenseCategory');
   const methodSel = document.getElementById('filterExpenseMethod');
-  if (search) search.addEventListener('input', () => { expensesFilterState.search = search.value.trim().toLowerCase(); renderExpensesTable(); });
-  if (catSel) catSel.addEventListener('change', () => { expensesFilterState.category = catSel.value; renderExpensesTable(); });
-  if (methodSel) methodSel.addEventListener('change', () => { expensesFilterState.method = methodSel.value; renderExpensesTable(); });
+  if (search) search.addEventListener('input', () => { expensesFilterState.search = search.value.trim().toLowerCase(); expensesPageState.currentPage = 1; renderExpensesTable(); });
+  if (catSel) catSel.addEventListener('change', () => { expensesFilterState.category = catSel.value; expensesPageState.currentPage = 1; renderExpensesTable(); });
+  if (methodSel) methodSel.addEventListener('change', () => { expensesFilterState.method = methodSel.value; expensesPageState.currentPage = 1; renderExpensesTable(); });
 
   const addBtn = document.getElementById('addExpenseBtn');
   if (addBtn) addBtn.addEventListener('click', () => openExpenseModal());
@@ -1156,8 +1187,13 @@ function renderExpensesTable() {
   const tbody = document.getElementById('expensesTableBody');
   const emptyWrap = document.getElementById('expensesEmptyState');
   const table = document.getElementById('expensesTable');
+  const paginationEl = document.getElementById('expensesPagination');
   if (!tbody) return;
+
   const list = getFilteredExpenses();
+  const totalPages = Math.max(1, Math.ceil(list.length / expensesPageState.pageSize));
+  if (expensesPageState.currentPage > totalPages) expensesPageState.currentPage = totalPages;
+
   const countEl = document.getElementById('expensesResultCount');
   if (countEl) countEl.textContent = `${list.length} expense${list.length !== 1 ? 's' : ''}`;
 
@@ -1165,12 +1201,16 @@ function renderExpensesTable() {
     table.style.display = 'none';
     emptyWrap.style.display = 'flex';
     emptyWrap.innerHTML = emptyState('fa-file-invoice', 'No expenses found', 'Try adjusting filters, or add a new expense record.');
+    if (paginationEl) paginationEl.innerHTML = '';
     return;
   }
   table.style.display = '';
   emptyWrap.style.display = 'none';
 
-  tbody.innerHTML = list.map(e => `
+  const startIndex = (expensesPageState.currentPage - 1) * expensesPageState.pageSize;
+  const pageRows = list.slice(startIndex, startIndex + expensesPageState.pageSize);
+
+  tbody.innerHTML = pageRows.map(e => `
     <tr>
       <td>${fmtDate(e.date)}</td>
       <td>
@@ -1193,6 +1233,33 @@ function renderExpensesTable() {
 
   tbody.querySelectorAll('[data-edit-exp]').forEach(b => b.addEventListener('click', () => openExpenseModal(b.dataset.editExp)));
   tbody.querySelectorAll('[data-delete-exp]').forEach(b => b.addEventListener('click', () => handleDeleteExpense(b.dataset.deleteExp)));
+
+  if (paginationEl) {
+    const pages = Array.from({ length: totalPages }, (_, index) => index + 1);
+    paginationEl.innerHTML = `
+      <button class="page-btn" data-exp-page-action="prev" ${expensesPageState.currentPage === 1 ? 'disabled' : ''}>Prev</button>
+      ${pages.map(pageNumber => `
+        <button class="page-btn ${pageNumber === expensesPageState.currentPage ? 'page-btn--active' : ''}" data-exp-page-number="${pageNumber}">${pageNumber}</button>
+      `).join('')}
+      <button class="page-btn" data-exp-page-action="next" ${expensesPageState.currentPage === totalPages ? 'disabled' : ''}>Next</button>
+    `;
+
+    paginationEl.querySelectorAll('[data-exp-page-number]').forEach(button => {
+      button.addEventListener('click', () => {
+        expensesPageState.currentPage = Number(button.dataset.expPageNumber);
+        renderExpensesTable();
+      });
+    });
+
+    paginationEl.querySelectorAll('[data-exp-page-action]').forEach(button => {
+      button.addEventListener('click', () => {
+        const action = button.dataset.expPageAction;
+        if (action === 'prev') expensesPageState.currentPage = Math.max(1, expensesPageState.currentPage - 1);
+        if (action === 'next') expensesPageState.currentPage = Math.min(totalPages, expensesPageState.currentPage + 1);
+        renderExpensesTable();
+      });
+    });
+  }
 }
 
 function openExpenseModal(expenseId) {

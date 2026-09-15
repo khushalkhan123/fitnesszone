@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Notifications · FitZone Gym</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="./css/style.css">
+</head>
+<body data-page="notifications">
+<div class="app-shell">
+  <div class="sidebar-scrim" id="sidebarScrim"></div>
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar__brand">
+      <div class="sidebar__brand-mark">FZ</div>
+      <div class="sidebar__brand-text">
+        <span class="sidebar__brand-name">FitZone Gym</span>
+        <span class="sidebar__brand-sub">Management System</span>
+      </div>
+    </div>
+    <nav class="sidebar__nav">
+      <a href="index.html" class="sidebar__link"><i class="fa-solid fa-gauge-high"></i> Dashboard</a>
+      <a href="members.html" class="sidebar__link"><i class="fa-solid fa-users"></i> Members</a>
+      <a href="attendance.html" class="sidebar__link"><i class="fa-solid fa-clock"></i> Attendance</a>
+      <a href="payments.html" class="sidebar__link"><i class="fa-solid fa-money-bill-transfer"></i> Payments</a>
+      <a href="plans.html" class="sidebar__link"><i class="fa-solid fa-clipboard-list"></i> Membership Plans</a>
+      <a href="training.html" class="sidebar__link"><i class="fa-solid fa-dumbbell"></i> Personal Training</a>
+      <a href="expenses.html" class="sidebar__link"><i class="fa-solid fa-wallet"></i> Expenses</a>
+      <a href="reports.html" class="sidebar__link"><i class="fa-solid fa-chart-line"></i> Reports</a>
+      <a href="staff.html" class="sidebar__link"><i class="fa-solid fa-user-tie"></i> Staff</a>
+      <a href="access-control.html" class="sidebar__link"><i class="fa-solid fa-door-open"></i> Access Control</a>
+      <a href="notifications.html" class="sidebar__link sidebar__link--active"><i class="fa-solid fa-bell"></i> Notifications</a>
+      <a href="settings.html" class="sidebar__link"><i class="fa-solid fa-gear"></i> Settings</a>
+    </nav>
+    <div class="sidebar__footer">
+      <div class="sidebar__owner">
+        <div class="sidebar__owner-avatar">FK</div>
+        <div>
+          <div class="sidebar__owner-name">Furqan</div>
+          <div class="sidebar__owner-role">Gym Owner</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <div class="topbar__left">
+        <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle menu"><i class="fa-solid fa-bars"></i></button>
+        <div>
+          <div class="topbar__title">Notifications</div>
+          <div class="topbar__subtitle">Message reminders across SMS and email</div>
+        </div>
+      </div>
+      <div class="topbar__right">
+        <div class="topbar__date" id="currentDate"></div>
+        <button class="btn btn--primary"><i class="fa-solid fa-paper-plane"></i> Send Reminder</button>
+      </div>
+    </header>
+
+    <main class="content">
+      <div class="page-hero">
+        <div>
+          <div class="page-hero__title">Campaign and reminder center</div>
+          <div class="page-hero__subtitle">Demo-only communication templates</div>
+        </div>
+        <div class="inline-actions">
+          <button class="btn btn--outline"><i class="fa-solid fa-eye"></i> View Template</button>
+          <button class="btn btn--primary"><i class="fa-solid fa-calendar"></i> Schedule</button>
+        </div>
+      </div>
+
+      <section class="setting-grid">
+        <div class="setting-card">
+          <h3>SMS Notifications</h3>
+          <div class="notification-stack">
+            <div class="notification-item"><div><div class="notification-item__title">Membership expiring</div><div class="notification-item__meta">Tomorrow by 10:00 AM</div></div><button class="btn btn--outline btn--sm">Send</button></div>
+            <div class="notification-item"><div><div class="notification-item__title">Fee overdue</div><div class="notification-item__meta">Approved template</div></div><button class="btn btn--outline btn--sm">Send</button></div>
+            <div class="notification-item"><div><div class="notification-item__title">Birthday reminder</div><div class="notification-item__meta">Starts at 09:00 AM</div></div><button class="btn btn--outline btn--sm">Send</button></div>
+          </div>
+        </div>
+
+        <div class="setting-card">
+          <h3>Email Notifications</h3>
+          <div class="notification-stack">
+            <div class="notification-item"><div><div class="notification-item__title">Renewal follow-up</div><div class="notification-item__meta">Classic status email</div></div><button class="btn btn--outline btn--sm">Send</button></div>
+            <div class="notification-item"><div><div class="notification-item__title">Monthly summary</div><div class="notification-item__meta">Delivery: 1st of every month</div></div><button class="btn btn--outline btn--sm">Send</button></div>
+            <div class="notification-item"><div><div class="notification-item__title">Campaign update</div><div class="notification-item__meta">Marketing push</div></div><button class="btn btn--outline btn--sm">Send</button></div>
+          </div>
+        </div>
+
+        <div class="setting-card">
+          <h3>Recent templates</h3>
+          <div class="notification-stack">
+            <div class="notification-item"><div><div class="notification-item__title">Late fee reminder</div><div class="notification-item__meta">Used 3 days ago</div></div><button class="btn btn--outline btn--sm">View</button></div>
+            <div class="notification-item"><div><div class="notification-item__title">Annual renewal notice</div><div class="notification-item__meta">Used 1 week ago</div></div><button class="btn btn--outline btn--sm">View</button></div>
+            <div class="notification-item"><div><div class="notification-item__title">Birthday wishes</div><div class="notification-item__meta">Ready to schedule</div></div><button class="btn btn--outline btn--sm">View</button></div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="app-footer">
+        <span>© 2026 FitZone Gym Management System. Demo build for evaluation purposes.</span>
+        <span>Version 1.0.0 · Karachi, Pakistan</span>
+      </footer>
+    </main>
+  </div>
+</div>
+
+<script src="js/script.js"></script>
+</body>
+</html>

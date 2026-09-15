@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Membership Plans · FitZone Gym</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="./css/style.css">
+</head>
+<body data-page="plans">
+<div class="app-shell">
+  <div class="sidebar-scrim" id="sidebarScrim"></div>
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar__brand">
+      <div class="sidebar__brand-mark">FZ</div>
+      <div class="sidebar__brand-text">
+        <span class="sidebar__brand-name">FitZone Gym</span>
+        <span class="sidebar__brand-sub">Management System</span>
+      </div>
+    </div>
+    <nav class="sidebar__nav">
+      <a href="index.html" class="sidebar__link"><i class="fa-solid fa-gauge-high"></i> Dashboard</a>
+      <a href="members.html" class="sidebar__link"><i class="fa-solid fa-users"></i> Members</a>
+      <a href="attendance.html" class="sidebar__link"><i class="fa-solid fa-clock"></i> Attendance</a>
+      <a href="payments.html" class="sidebar__link"><i class="fa-solid fa-money-bill-transfer"></i> Payments</a>
+      <a href="plans.html" class="sidebar__link sidebar__link--active"><i class="fa-solid fa-clipboard-list"></i> Membership Plans</a>
+      <a href="training.html" class="sidebar__link"><i class="fa-solid fa-dumbbell"></i> Personal Training</a>
+      <a href="expenses.html" class="sidebar__link"><i class="fa-solid fa-wallet"></i> Expenses</a>
+      <a href="reports.html" class="sidebar__link"><i class="fa-solid fa-chart-line"></i> Reports</a>
+      <a href="staff.html" class="sidebar__link"><i class="fa-solid fa-user-tie"></i> Staff</a>
+      <a href="access-control.html" class="sidebar__link"><i class="fa-solid fa-door-open"></i> Access Control</a>
+      <a href="notifications.html" class="sidebar__link"><i class="fa-solid fa-bell"></i> Notifications</a>
+      <a href="settings.html" class="sidebar__link"><i class="fa-solid fa-gear"></i> Settings</a>
+    </nav>
+    <div class="sidebar__footer">
+      <div class="sidebar__owner">
+        <div class="sidebar__owner-avatar">FK</div>
+        <div>
+          <div class="sidebar__owner-name">Furqan</div>
+          <div class="sidebar__owner-role">Gym Owner</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <div class="topbar__left">
+        <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle menu"><i class="fa-solid fa-bars"></i></button>
+        <div>
+          <div class="topbar__title">Membership Plans</div>
+          <div class="topbar__subtitle">Manage recurring fees, duration and member benefits</div>
+        </div>
+      </div>
+      <div class="topbar__right">
+        <div class="topbar__date" id="currentDate"></div>
+        <button class="btn btn--primary"><i class="fa-solid fa-plus"></i> Add Plan</button>
+      </div>
+    </header>
+
+    <main class="content">
+      <div class="page-hero">
+        <div>
+          <div class="page-hero__title">Plan catalog</div>
+          <div class="page-hero__subtitle">Pakistani pricing for gym access and personal training bundles</div>
+        </div>
+        <div class="inline-actions">
+          <button class="btn btn--outline"><i class="fa-solid fa-pen"></i> Edit Plan</button>
+          <button class="btn btn--primary"><i class="fa-solid fa-eye"></i> View Plan</button>
+        </div>
+      </div>
+
+      <section class="plan-grid">
+        <div class="plan-card">
+          <div class="plan-card__header">
+            <div>
+              <div class="plan-card__name">Monthly Membership</div>
+              <div class="plan-card__meta">1 month · Most popular</div>
+            </div>
+            <span class="badge badge--success">Active</span>
+          </div>
+          <div class="plan-card__price">Rs. 3,500</div>
+          <div class="plan-card__benefits">
+            <div class="plan-card__benefit"><i class="fa-solid fa-check"></i> Gym floor access</div>
+            <div class="plan-card__benefit"><i class="fa-solid fa-check"></i> Standard locker</div>
+            <div class="plan-card__benefit"><i class="fa-solid fa-check"></i> 2 guest passes / month</div>
+          </div>
+          <div class="detail-row"><span class="detail-row__label">Active subscribers</span><span class="detail-row__value">158</span></div>
+        </div>
+
+        <div class="plan-card">
+          <div class="plan-card__header">
+            <div>
+              <div class="plan-card__name">Premium Monthly</div>
+              <div class="plan-card__meta">1 month · Elite access</div>
+            </div>
+            <span class="badge badge--success">Active</span>
+          </div>
+          <div class="plan-card__price">Rs. 5,000</div>
+          <div class="plan-card__benefits">
+            <div class="plan-card__benefit"><i class="fa-solid fa-check"></i> Unlimited cardio & weights</div>
+            <div class="plan-card__benefit"><i class="fa-solid fa-check"></i> Premium locker access</div>
+            <div class="plan-card__benefit"><i class="fa-solid fa-check"></i> Nutrition consultation</div>
+          </div>
+          <div class="detail-row"><span class="detail-row__label">Active subscribers</span><span class="detail-row__value">87</span></div>
+        </div>
+
+        <div class="plan-card">
+          <div class="plan-card__header">
+            <div>
+              <div class="plan-card__name">3 Months</div>
+              <div class="plan-card__meta">Quarterly commitment</div>
+            </div>
+            <span class="badge badge--success">Active</span>
+          </div>
+          <div class="plan-card__price">Rs. 9,000</div>
+          <div class="plan-card__benefits">
+            <div class="plan-card__benefit"><i class="fa-solid fa-check"></i> 3 month savings</div>
+            <div class="plan-card__benefit"><i class="fa-solid fa-check"></i> Priority check-ins</div>
+            <div class="plan-card__benefit"><i class="fa-solid fa-check"></i> Locker access</div>
+          </div>
+          <div class="detail-row"><span class="detail-row__label">Active subscribers</span><span class="detail-row__value">59</span></div>
+        </div>
+
+        <div class="plan-card">
+          <div class="plan-card__header">
+            <div>
+              <div class="plan-card__name">6 Months</div>
+              <div class="plan-card__meta">Half-year membership</div>
+            </div>
+            <span class="badge badge--success">Active</span>
+          </div>
+          <div class="plan-card__price">Rs. 16,000</div>
+          <div class="plan-card__benefits">
+            <div class="plan-card__benefit"><i class="fa-solid fa-check"></i> Best value package</div>
+            <div class="plan-card__benefit"><i class="fa-solid fa-check"></i> Extra guest passes</div>
+            <div class="plan-card__benefit"><i class="fa-solid fa-check"></i> Fitness assessment</div>
+          </div>
+          <div class="detail-row"><span class="detail-row__label">Active subscribers</span><span class="detail-row__value">36</span></div>
+        </div>
+
+        <div class="plan-card">
+          <div class="plan-card__header">
+            <div>
+              <div class="plan-card__name">Annual Membership</div>
+              <div class="plan-card__meta">12 months · long term</div>
+            </div>
+            <span class="badge badge--warning">Popular</span>
+          </div>
+          <div class="plan-card__price">Rs. 28,000</div>
+          <div class="plan-card__benefits">
+            <div class="plan-card__benefit"><i class="fa-solid fa-check"></i> Unlimited gym access</div>
+            <div class="plan-card__benefit"><i class="fa-solid fa-check"></i> 1 free personal training session</div>
+            <div class="plan-card__benefit"><i class="fa-solid fa-check"></i> Priority support</div>
+          </div>
+          <div class="detail-row"><span class="detail-row__label">Active subscribers</span><span class="detail-row__value">44</span></div>
+        </div>
+
+        <div class="plan-card">
+          <div class="plan-card__header">
+            <div>
+              <div class="plan-card__name">Personal Training</div>
+              <div class="plan-card__meta">12 week coaching</div>
+            </div>
+            <span class="badge badge--neutral">Custom</span>
+          </div>
+          <div class="plan-card__price">Rs. 8,000</div>
+          <div class="plan-card__benefits">
+            <div class="plan-card__benefit"><i class="fa-solid fa-check"></i> 4 sessions / month</div>
+            <div class="plan-card__benefit"><i class="fa-solid fa-check"></i> Nutrition tracking</div>
+            <div class="plan-card__benefit"><i class="fa-solid fa-check"></i> Progress analysis</div>
+          </div>
+          <div class="detail-row"><span class="detail-row__label">Active subscribers</span><span class="detail-row__value">61</span></div>
+        </div>
+      </section>
+
+      <footer class="app-footer">
+        <span>© 2026 FitZone Gym Management System. Demo build for evaluation purposes.</span>
+        <span>Version 1.0.0 · Karachi, Pakistan</span>
+      </footer>
+    </main>
+  </div>
+</div>
+
+<script src="js/script.js"></script>
+</body>
+</html>

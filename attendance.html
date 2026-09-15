@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Attendance · FitZone Gym</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="./css/style.css">
+</head>
+<body data-page="attendance">
+<div class="app-shell">
+  <div class="sidebar-scrim" id="sidebarScrim"></div>
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar__brand">
+      <div class="sidebar__brand-mark">FZ</div>
+      <div class="sidebar__brand-text">
+        <span class="sidebar__brand-name">FitZone Gym</span>
+        <span class="sidebar__brand-sub">Management System</span>
+      </div>
+    </div>
+    <nav class="sidebar__nav">
+      <a href="index.html" class="sidebar__link"><i class="fa-solid fa-gauge-high"></i> Dashboard</a>
+      <a href="members.html" class="sidebar__link"><i class="fa-solid fa-users"></i> Members</a>
+      <a href="attendance.html" class="sidebar__link sidebar__link--active"><i class="fa-solid fa-clock"></i> Attendance</a>
+      <a href="payments.html" class="sidebar__link"><i class="fa-solid fa-money-bill-transfer"></i> Payments</a>
+      <a href="plans.html" class="sidebar__link"><i class="fa-solid fa-clipboard-list"></i> Membership Plans</a>
+      <a href="training.html" class="sidebar__link"><i class="fa-solid fa-dumbbell"></i> Personal Training</a>
+      <a href="expenses.html" class="sidebar__link"><i class="fa-solid fa-wallet"></i> Expenses</a>
+      <a href="reports.html" class="sidebar__link"><i class="fa-solid fa-chart-line"></i> Reports</a>
+      <a href="staff.html" class="sidebar__link"><i class="fa-solid fa-user-tie"></i> Staff</a>
+      <a href="access-control.html" class="sidebar__link"><i class="fa-solid fa-door-open"></i> Access Control</a>
+      <a href="notifications.html" class="sidebar__link"><i class="fa-solid fa-bell"></i> Notifications</a>
+      <a href="settings.html" class="sidebar__link"><i class="fa-solid fa-gear"></i> Settings</a>
+    </nav>
+    <div class="sidebar__footer">
+      <div class="sidebar__owner">
+        <div class="sidebar__owner-avatar">FK</div>
+        <div>
+          <div class="sidebar__owner-name">Furqan</div>
+          <div class="sidebar__owner-role">Gym Owner</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <div class="topbar__left">
+        <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle menu"><i class="fa-solid fa-bars"></i></button>
+        <div>
+          <div class="topbar__title">Attendance</div>
+          <div class="topbar__subtitle">Smart check-ins, trends and future ZKTeco simulation</div>
+        </div>
+      </div>
+      <div class="topbar__right">
+        <div class="topbar__date" id="currentDate"></div>
+        <button class="btn btn--primary"><i class="fa-solid fa-filter"></i> Date Filter</button>
+      </div>
+    </header>
+
+    <main class="content">
+      <div class="page-hero">
+        <div>
+          <div class="page-hero__title">Member attendance overview</div>
+          <div class="page-hero__subtitle">Demo attendance data for the gym floor and future access integrations</div>
+        </div>
+        <div class="inline-actions">
+          <button class="btn btn--outline"><i class="fa-solid fa-calendar-days"></i> Today</button>
+          <button class="btn btn--primary"><i class="fa-solid fa-magnifying-glass"></i> Search Member</button>
+        </div>
+      </div>
+
+      <section class="kpi-strip">
+        <div class="mini-stat">
+          <div class="mini-stat__label">Today’s Attendance</div>
+          <div class="mini-stat__value">186</div>
+          <div class="mini-stat__trend">86% of active members</div>
+        </div>
+        <div class="mini-stat">
+          <div class="mini-stat__label">Present</div>
+          <div class="mini-stat__value">161</div>
+          <div class="mini-stat__trend">86.6% present</div>
+        </div>
+        <div class="mini-stat">
+          <div class="mini-stat__label">Absent</div>
+          <div class="mini-stat__value">25</div>
+          <div class="mini-stat__trend mini-stat__trend--down">13.4% absent</div>
+        </div>
+        <div class="mini-stat">
+          <div class="mini-stat__label">Late Arrivals</div>
+          <div class="mini-stat__value">18</div>
+          <div class="mini-stat__trend">After 8:00 AM</div>
+        </div>
+        <div class="mini-stat">
+          <div class="mini-stat__label">Attendance %</div>
+          <div class="mini-stat__value">86%</div>
+          <div class="mini-stat__trend">Up 2.1% this week</div>
+        </div>
+      </section>
+
+      <section class="hero-card">
+        <div class="smart-card">
+          <div class="smart-card__header">
+            <div class="smart-card__title">Smart Attendance</div>
+            <span class="smart-card__badge">Demo / Future ZKTeco</span>
+          </div>
+          <div class="smart-card__detail">
+            <div class="detail-row"><span class="detail-row__label">Event</span><span class="detail-row__value">Fingerprint Detected</span></div>
+            <div class="detail-row"><span class="detail-row__label">Member</span><span class="detail-row__value">Ahmed Khan</span></div>
+            <div class="detail-row"><span class="detail-row__label">Member ID</span><span class="detail-row__value">GYM-1024</span></div>
+            <div class="detail-row"><span class="detail-row__label">Check-in</span><span class="detail-row__value">06:42 PM</span></div>
+            <div class="detail-row"><span class="detail-row__label">Membership</span><span class="detail-row__value">Active</span></div>
+            <div class="detail-row"><span class="detail-row__label">Fee Status</span><span class="detail-row__value">Paid</span></div>
+            <div class="detail-row"><span class="detail-row__label">Access</span><span class="detail-row__value">Granted</span></div>
+          </div>
+        </div>
+        <div class="flow-box">
+          <div class="flow-box__title">Access Decision</div>
+          <div class="access-flow">
+            <div class="access-flow__step"><i class="fa-solid fa-fingerprint"></i> Fingerprint → Member Verification</div>
+            <div class="access-flow__step"><i class="fa-solid fa-clipboard-check"></i> Fee Check → Membership Status</div>
+            <div class="access-flow__step"><i class="fa-solid fa-door-open"></i> Access Decision → Entry Granted/Restricted</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" style="margin-bottom: 18px;">
+        <div class="panel__header">
+          <h3>Attendance Activity</h3>
+          <div class="panel__header-sub">Demo data only</div>
+        </div>
+        <div class="panel__body">
+          <div class="toolbar">
+            <div class="toolbar__search">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="text" placeholder="Search member...">
+            </div>
+            <select>
+              <option>All Dates</option>
+              <option>Today</option>
+              <option>This Week</option>
+              <option>This Month</option>
+            </select>
+            <select>
+              <option>All Attendance</option>
+              <option>Present</option>
+              <option>Absent</option>
+              <option>Late</option>
+            </select>
+            <div class="toolbar__spacer"></div>
+            <span class="toolbar__count">186 records</span>
+          </div>
+
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Member</th>
+                  <th>ID</th>
+                  <th>Check-in</th>
+                  <th>Check-out</th>
+                  <th>Membership</th>
+                  <th>Payment</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><div class="cell-person"><div class="list-row__avatar">AK</div><div><div class="cell-person__name">Ahmed Khan</div><div class="cell-person__sub">DHA Phase 5</div></div></div></td>
+                  <td><span class="mono">GYM-1024</span></td>
+                  <td>06:42 PM</td>
+                  <td>09:10 PM</td>
+                  <td><span class="badge badge--success">Active</span></td>
+                  <td><span class="badge badge--success">Paid</span></td>
+                  <td><span class="badge badge--success">Present</span></td>
+                </tr>
+                <tr>
+                  <td><div class="cell-person"><div class="list-row__avatar">MU</div><div><div class="cell-person__name">Muhammad Usman</div><div class="cell-person__sub">Gulberg</div></div></div></td>
+                  <td><span class="mono">GYM-1173</span></td>
+                  <td>08:16 AM</td>
+                  <td>11:45 AM</td>
+                  <td><span class="badge badge--danger">Expired</span></td>
+                  <td><span class="badge badge--danger">Overdue</span></td>
+                  <td><span class="badge badge--warning">Late</span></td>
+                </tr>
+                <tr>
+                  <td><div class="cell-person"><div class="list-row__avatar">AR</div><div><div class="cell-person__name">Ali Raza</div><div class="cell-person__sub">Bahria Town</div></div></div></td>
+                  <td><span class="mono">GYM-0948</span></td>
+                  <td>07:05 AM</td>
+                  <td>10:55 AM</td>
+                  <td><span class="badge badge--success">Active</span></td>
+                  <td><span class="badge badge--success">Paid</span></td>
+                  <td><span class="badge badge--success">Present</span></td>
+                </tr>
+                <tr>
+                  <td><div class="cell-person"><div class="list-row__avatar">HB</div><div><div class="cell-person__name">Hina Baloch</div><div class="cell-person__sub">Model Town</div></div></div></td>
+                  <td><span class="mono">GYM-1211</span></td>
+                  <td>—</td>
+                  <td>—</td>
+                  <td><span class="badge badge--success">Active</span></td>
+                  <td><span class="badge badge--warning">Pending</span></td>
+                  <td><span class="badge badge--danger">Absent</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <footer class="app-footer">
+        <span>© 2026 FitZone Gym Management System. Demo build for evaluation purposes.</span>
+        <span>Version 1.0.0 · Karachi, Pakistan</span>
+      </footer>
+    </main>
+  </div>
+</div>
+
+<script src="js/script.js"></script>
+</body>
+</html>

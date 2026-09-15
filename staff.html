@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Staff · FitZone Gym</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="./css/style.css">
+</head>
+<body data-page="staff">
+<div class="app-shell">
+  <div class="sidebar-scrim" id="sidebarScrim"></div>
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar__brand">
+      <div class="sidebar__brand-mark">FZ</div>
+      <div class="sidebar__brand-text">
+        <span class="sidebar__brand-name">FitZone Gym</span>
+        <span class="sidebar__brand-sub">Management System</span>
+      </div>
+    </div>
+    <nav class="sidebar__nav">
+      <a href="index.html" class="sidebar__link"><i class="fa-solid fa-gauge-high"></i> Dashboard</a>
+      <a href="members.html" class="sidebar__link"><i class="fa-solid fa-users"></i> Members</a>
+      <a href="attendance.html" class="sidebar__link"><i class="fa-solid fa-clock"></i> Attendance</a>
+      <a href="payments.html" class="sidebar__link"><i class="fa-solid fa-money-bill-transfer"></i> Payments</a>
+      <a href="plans.html" class="sidebar__link"><i class="fa-solid fa-clipboard-list"></i> Membership Plans</a>
+      <a href="training.html" class="sidebar__link"><i class="fa-solid fa-dumbbell"></i> Personal Training</a>
+      <a href="expenses.html" class="sidebar__link"><i class="fa-solid fa-wallet"></i> Expenses</a>
+      <a href="reports.html" class="sidebar__link"><i class="fa-solid fa-chart-line"></i> Reports</a>
+      <a href="staff.html" class="sidebar__link sidebar__link--active"><i class="fa-solid fa-user-tie"></i> Staff</a>
+      <a href="access-control.html" class="sidebar__link"><i class="fa-solid fa-door-open"></i> Access Control</a>
+      <a href="notifications.html" class="sidebar__link"><i class="fa-solid fa-bell"></i> Notifications</a>
+      <a href="settings.html" class="sidebar__link"><i class="fa-solid fa-gear"></i> Settings</a>
+    </nav>
+    <div class="sidebar__footer">
+      <div class="sidebar__owner">
+        <div class="sidebar__owner-avatar">FK</div>
+        <div>
+          <div class="sidebar__owner-name">Furqan</div>
+          <div class="sidebar__owner-role">Gym Owner</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <div class="topbar__left">
+        <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle menu"><i class="fa-solid fa-bars"></i></button>
+        <div>
+          <div class="topbar__title">Staff Management</div>
+          <div class="topbar__subtitle">Track schedules, attendance and roles across the gym</div>
+        </div>
+      </div>
+      <div class="topbar__right">
+        <div class="topbar__date" id="currentDate"></div>
+        <button class="btn btn--primary"><i class="fa-solid fa-user-plus"></i> Add Staff</button>
+      </div>
+    </header>
+
+    <main class="content">
+      <div class="page-hero">
+        <div>
+          <div class="page-hero__title">Team roster</div>
+          <div class="page-hero__subtitle">Managers, trainers, reception and support staff</div>
+        </div>
+        <div class="inline-actions">
+          <button class="btn btn--outline"><i class="fa-solid fa-pen"></i> Edit Staff</button>
+          <button class="btn btn--primary"><i class="fa-solid fa-eye"></i> Staff Details</button>
+        </div>
+      </div>
+
+      <section class="panel">
+        <div class="panel__body">
+          <div class="toolbar">
+            <div class="toolbar__search"><i class="fa-solid fa-magnifying-glass"></i><input type="text" placeholder="Search staff member..."></div>
+            <select><option>All Roles</option><option>Manager</option><option>Trainer</option><option>Receptionist</option><option>Cleaner</option><option>Security</option></select>
+            <select><option>All Shifts</option><option>Morning</option><option>Evening</option><option>Night</option></select>
+            <div class="toolbar__spacer"></div>
+            <span class="toolbar__count">12 team members</span>
+          </div>
+
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead>
+                <tr><th>Staff</th><th>Role</th><th>Phone</th><th>Joining Date</th><th>Shift</th><th>Attendance</th><th>Status</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><div class="cell-person"><div class="list-row__avatar">BK</div><div><div class="cell-person__name">Bilal Khan</div><div class="cell-person__sub">Manager</div></div></div></td><td>Manager</td><td>0300-1234567</td><td>10 Jan 2023</td><td>Morning</td><td>96%</td><td><span class="badge badge--success">Present</span></td></tr>
+                <tr><td><div class="cell-person"><div class="list-row__avatar">AR</div><div><div class="cell-person__name">Ali Raza</div><div class="cell-person__sub">Trainer</div></div></div></td><td>Trainer</td><td>0312-6543210</td><td>05 Mar 2022</td><td>Evening</td><td>91%</td><td><span class="badge badge--success">Present</span></td></tr>
+                <tr><td><div class="cell-person"><div class="list-row__avatar">SN</div><div><div class="cell-person__name">Sana Nadeem</div><div class="cell-person__sub">Receptionist</div></div></div></td><td>Receptionist</td><td>0333-7788991</td><td>12 Apr 2024</td><td>Morning</td><td>88%</td><td><span class="badge badge--success">Present</span></td></tr>
+                <tr><td><div class="cell-person"><div class="list-row__avatar">HK</div><div><div class="cell-person__name">Hassan Khan</div><div class="cell-person__sub">Cleaner</div></div></div></td><td>Cleaner</td><td>0345-3322110</td><td>20 Dec 2023</td><td>Night</td><td>82%</td><td><span class="badge badge--warning">Late</span></td></tr>
+                <tr><td><div class="cell-person"><div class="list-row__avatar">SM</div><div><div class="cell-person__name">Shahbaz Malik</div><div class="cell-person__sub">Security</div></div></div></td><td>Security</td><td>0301-5544332</td><td>09 Feb 2022</td><td>Night</td><td>94%</td><td><span class="badge badge--success">Present</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <footer class="app-footer">
+        <span>© 2026 FitZone Gym Management System. Demo build for evaluation purposes.</span>
+        <span>Version 1.0.0 · Karachi, Pakistan</span>
+      </footer>
+    </main>
+  </div>
+</div>
+
+<script src="js/script.js"></script>
+</body>
+</html>
